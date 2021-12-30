@@ -1,13 +1,12 @@
 <template>
-	<div class="mt-28 mx-12">
+	<div class="mt-28 mx-4 w-full overflow-x-auto">
 		<p class="hidden text-center text-mainblue my-10 underline">
 			Here's your suggestions based on {{ searchName }}
 		</p>
-		<ul v-if="cards" class="my-10 pb-8 w-full flex overflow-x-auto gap-8 justify-center">
-			<li v-for="card in cards" :key="card.canonicalTitle" class="snap-center mx-4">
+		<ul v-if="cards" class="my-10 pb-6 w-full flex overflow-x-auto gap-4">
+			<li v-for="card in cards" :key="card.canonicalTitle" class="mx-2">
 				<div
-					class="relative flex-shrink-0 max-w-[95vw] overflow-hidden rounded-xl hover:shadow-xl"
-				>
+					class="relative flex-shrink-0 max-w-[85vw] overflow-hidden rounded-xl hover:shadow-xl">
 					<img
 						:src="card.posterImage"
 						alt="poster image"
@@ -17,8 +16,7 @@
 						class="absolute inset-0 h-full w-full bg-gradient-to-br from-black/75"
 					></div>
 					<div
-						class="relative h-96 w-[768px] p-8 flex flex-col justify-between items-start"
-					>
+						class="relative h-96 w-[768px] p-8 flex flex-col justify-between items-start">
 						<div class="font-sans">
 							<p class="mb-24 w-3/4 text-xl tracking-tight text-black">
 								{{ card.canonicalTitle }}
