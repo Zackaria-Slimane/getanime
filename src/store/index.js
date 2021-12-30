@@ -5,7 +5,7 @@ import { createStore, Store } from "vuex";
 export default createStore({
 	state: {
 		loading: false,
-		menuToggle: false,
+		menuToggle: true,
 		searchHidden: false,
 		userQuerry: "",
 		nbrSuggestions: 2,
