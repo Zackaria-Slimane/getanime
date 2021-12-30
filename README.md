@@ -14,6 +14,14 @@ ie: to get suggestions on jujutsu kaisen , both first letters should be upperCas
 and more
 ```
 
+## Live preview
+
+```
+animefy.netlify.app
+```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/131d96cd-d9ab-46a8-bc13-68c1229ae03e/deploy-status)](https://app.netlify.com/sites/animefy/deploys)
+
+
 ## Project setup
 
 ```
