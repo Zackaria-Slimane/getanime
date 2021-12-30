@@ -1,6 +1,6 @@
 <template>
 	<div class="mt-28 mx-12">
-		<p class="text-center text-mainblue my-10 underline">
+		<p class="hidden text-center text-mainblue my-10 underline">
 			Here's your suggestions based on {{ searchName }}
 		</p>
 		<ul v-if="cards" class="my-10 pb-8 w-full flex overflow-x-auto gap-8 justify-center">
