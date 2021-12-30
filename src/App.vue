@@ -1,5 +1,5 @@
 <template>
-	<div class="overflow-auto">
+	<div>
 		<app-header />
 		<app-search />
 		<app-card />
