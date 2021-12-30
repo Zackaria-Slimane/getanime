@@ -1,8 +1,9 @@
 # animefy
 
 ```
-Simple Vue app to suggest animes based on input, please be cautions with your search input, the api is very case sensitive, 
-ie: to get suggestions on jujutsu kaisen , both first letters should be upperCase like so = Jujutsu Kaisen, it matches the title.
+Simple Vue app to suggest animes based on input, please be cautions with your search input,
+the api is very case sensitive, 
+ie: to get suggestions on jujutsu kaisen , letters should be upperCase Jujutsu Kaisen
 ```
 
 ## TODOS
