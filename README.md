@@ -1,7 +1,9 @@
 # animefy
 
 ```
-Simple Vue app to suggest animes based on input, please be cautions with your search input, the api is very case sensitive, ie: to get suggestions on jujutsu kaisen , both first letters should be upperCase like so = Jujutsu Kaisen, it matches the title.
+Simple Vue app to suggest animes based on input, please be cautions with your search input,
+the api is very case sensitive, 
+ie: to get suggestions on jujutsu kaisen , letters should be upperCase Jujutsu Kaisen
 ```
 
 ## TODOS
@@ -12,6 +14,14 @@ Simple Vue app to suggest animes based on input, please be cautions with your se
 3 ) better cards
 and more
 ```
+
+## Live preview
+
+
+https://animefy.netlify.app
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/131d96cd-d9ab-46a8-bc13-68c1229ae03e/deploy-status)](https://app.netlify.com/sites/animefy/deploys)
+
 
 ## Project setup
 
