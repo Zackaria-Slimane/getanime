@@ -6,9 +6,10 @@
 		<input
 			type="text"
 			id="query"
-			class="text-sm text-center rounded-lg self-center md:w-2/4 w-full p-2.5 bg-transparent focus:outline-none placeholder-black border-b-4 border-mainblue"
-			placeholder=" Jujutsu kaisen ..."
-			:value="userQuery"
+			class="text-sm rounded-lg self-center md:w-2/4 w-full p-2.5 bg-transparent focus:outline-none placeholder-black border-b-4 border-mainblue"
+			placeholder="Anime name ( case sensitive ) "
+			:value="userQuerry"
+			@change="setUserQuerry"
 		/>
 
 		<input
@@ -16,6 +17,7 @@
 			class="h-8 mt-8 w-24 self-center rounded-lg text-center bg-transparent focus:outline-none placeholder-black border-b-4 border-mainblue"
 			name="custom-input-number"
 			:value="nbrSuggestions"
+			@change="setNbr"
 		/>
 
 		<p class="mt-8 text-sm text-center text-mainblue dark:text-gray-400">
@@ -46,17 +48,26 @@
 </template>
 <script>
 	import { mapMutations } from "vuex";
+	import store from "../store";
 
 	export default {
 		name: "appSearch",
 		data() {
 			return {
-				nbrSuggestions: 1,
-				userQuery: "",
+				nbrSuggestions: store.state.nbrSuggestions,
+				userQuerry: store.state.userQuerry,
 			};
 		},
 		methods: {
-			...mapMutations(["fetchData"]),
+			...mapMutations(["fetchData", "fetchAPI"]),
+
+			setUserQuerry: (event) => {
+				store.commit("setUserQuerry", event.target.value);
+			},
+
+			setNbr: (event) => {
+				store.commit("setNbr", event.target.value);
+			},
 		},
 
 		computed: {
