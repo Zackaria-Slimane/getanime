@@ -6,12 +6,8 @@
 		<ul v-if="cards" class="my-10 pb-6 w-full flex overflow-x-auto gap-4">
 			<li v-for="card in cards" :key="card.canonicalTitle" class="mx-2">
 				<div
-<<<<<<< HEAD
 					class="relative flex-shrink-0 max-w-[85vw] overflow-hidden rounded-xl hover:shadow-xl"
 				>
-=======
-					class="relative flex-shrink-0 max-w-[85vw] overflow-hidden rounded-xl hover:shadow-xl">
->>>>>>> bbc7cb984715977a4d58fa38019aa30b61ee7ac1
 					<img
 						:src="card.posterImage"
 						alt="poster image"
@@ -21,7 +17,8 @@
 						class="absolute inset-0 h-full w-full bg-gradient-to-br from-black/75"
 					></div>
 					<div
-						class="relative h-96 w-[768px] p-8 flex flex-col justify-between items-start">
+						class="relative h-96 w-[768px] p-8 flex flex-col justify-between items-start"
+					>
 						<div class="font-sans">
 							<p class="mb-24 w-3/4 text-xl tracking-tight text-black">
 								{{ card.canonicalTitle }}
