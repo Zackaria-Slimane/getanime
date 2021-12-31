@@ -4,7 +4,7 @@
 			class="bg-champagne text-white shadow-md px-4 py-8 sm:px-4 rounded dark:bg-gray-800"
 		>
 			<div class="container flex flex-wrap justify-between items-center mx-auto">
-				<a class="flex">
+				<a class="flex" @click="reload">
 					<span
 						class="self-center font-atitle text-mainblue hover:text-black font-bold whitespace-nowrap text-3xl dark:text-white"
 						>Animefy
@@ -92,6 +92,9 @@
 		},
 		methods: {
 			...mapMutations(["toggleMenu", "toggleSearch"]),
+			reload() {
+				window.location.reload();
+			},
 		},
 	};
 </script>

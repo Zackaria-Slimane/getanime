@@ -34,11 +34,11 @@ export default createStore({
 
 			var options = {
 				method: "GET",
-				url: "https://anime-recommender.p.rapidapi.com/",
+				url: process.env.VUE_APP_URL,
 				params: { anime_title: state.userQuerry, number_of_anime: state.nbrSuggestions },
 				headers: {
-					"x-rapidapi-host": "anime-recommender.p.rapidapi.com",
-					"x-rapidapi-key": "06d5b35b4amsh04afba0573aab21p1d924fjsne5088f381ed7",
+					"x-rapidapi-host": process.env.VUE_APP_HOST,
+					"x-rapidapi-key": process.env.VUE_APP_APIKEY,
 				},
 			};
 
