@@ -1,0 +1,111 @@
+<template>
+	<div class="mt-32" :class="{ hidden: searchHidden }">
+		<div
+			class="self-center mx-auto mb-4 my-5 flex align-middle items-center justify-center"
+		>
+			<div class="relative">
+				<div class="absolute left-0 inset-y-0 pl-3 flex items-center">
+					<svg
+						class="fill-current h-6 w-6 text-gray-400"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+					>
+						<path
+							d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+						/>
+					</svg>
+				</div>
+
+				<input
+					class="w-full border-2 pl-12 pr-4 py-2 rounded-full focus:border-mainblue focus:shadow-outline"
+					type="text"
+					:class="{ 'border-red-400': errorTrue }"
+					placeholder="Search for an anime"
+					:value="userQuerry"
+					@change="setUserQuerry"
+				/>
+			</div>
+		</div>
+
+		<div class="flex justify-center self-center mx-auto rounded-lg w-1/3">
+			<div
+				class="py-2 px-4 font-xl font-bold cursor-pointer rounded-lg"
+				@click="decrease"
+			>
+				-
+			</div>
+
+			<input
+				class="border border-mainblue rounded-lg w-20 text-center focus:ring-mainblue"
+				type="text"
+				:value="nbrSuggestions"
+				@change="setNbr"
+			/>
+
+			<div
+				class="py-2 px-4 font-xl font-bold hover:text-mainblue cursor-pointer rounded-lg"
+				@click="increase"
+			>
+				+
+			</div>
+		</div>
+
+		<p class="mt-8 text-sm text-center text-mainblue dark:text-gray-400">
+			Enter the name of the anime you want to get suggestions based on, and the number of
+			suggestions.
+		</p>
+
+		<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
+			<button
+				class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
+				@click.prevent="fetchData"
+			>
+				Get suggestions
+			</button>
+		</div>
+	</div>
+</template>
+<script>
+	import { mapMutations } from "vuex";
+	import store from "../store";
+
+	export default {
+		name: "appSearch",
+		data() {
+			return {
+				userQuerry: store.state.userQuerry,
+				nbrSuggestions: store.state.nbrSuggestions,
+			};
+		},
+		methods: {
+			...mapMutations(["fetchData"]),
+
+			setUserQuerry: (event) => {
+				store.commit("setUserQuerry", event.target.value);
+			},
+
+			setNbr: (event) => {
+				store.commit("setNbr", event.target.value);
+			},
+
+			increase() {
+				this.nbrSuggestions++;
+				store.commit("setNbr", this.nbrSuggestions);
+			},
+			decrease() {
+				if (this.nbrSuggestions > 1) {
+					this.nbrSuggestions -= 1;
+					store.commit("setNbr", this.nbrSuggestions);
+				}
+			},
+		},
+		computed: {
+			searchHidden() {
+				return this.$store.getters.getSearchState;
+			},
+			errorTrue() {
+				return this.$store.getters.getErrorState;
+			},
+		},
+	};
+</script>

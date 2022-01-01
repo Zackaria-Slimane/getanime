@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav
-			class="bg-champagne text-white shadow-md px-4 py-8 sm:px-4 rounded dark:bg-gray-800"
+			class="bg-champagne text-white shadow-md px-4 py-8 w-full sm:px-4 rounded dark:bg-gray-800"
 		>
 			<div class="container flex flex-wrap justify-between items-center mx-auto">
 				<a class="flex" @click="reload">
@@ -54,6 +54,14 @@
 								href="javascript:0void"
 								class="block py-2 pr-4 pl-3 text-xl text-mainblue rounded hover:text-black md:p-0 dark:text-white"
 								@click.prevent="toggleSearch"
+								>Suggestions
+							</a>
+						</li>
+
+						<li>
+							<a
+								href="javascript:0void"
+								class="block py-2 pr-4 pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
 								>Search
 							</a>
 						</li>
@@ -63,14 +71,6 @@
 								href="javascript:0void"
 								class="block py-2 pr-4 pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
 								>Popular
-							</a>
-						</li>
-
-						<li>
-							<a
-								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
-								>About
 							</a>
 						</li>
 					</ul>
@@ -91,10 +91,7 @@
 			},
 		},
 		methods: {
-			...mapMutations(["toggleMenu", "toggleSearch"]),
-			reload() {
-				window.location.reload();
-			},
+			...mapMutations(["toggleMenu", "toggleSearch", "reload"]),
 		},
 	};
 </script>

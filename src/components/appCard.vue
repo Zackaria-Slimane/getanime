@@ -1,9 +1,12 @@
 <template>
-	<div class="mt-28 mx-4 w-full overflow-x-auto">
+	<div class="mt-28 w-full">
 		<p v-if="cards.length" class="text-center text-mainblue my-10 underline">
 			Here's your suggestions based on {{ this.$store.state.userQuerry }}
 		</p>
-		<ul v-if="cards" class="my-10 pb-6 w-full flex overflow-x-auto justify-center gap-4">
+		<ul
+			v-if="fetchCards"
+			class="my-10 pb-6 overflow-x-auto w-full flex justify-center gap-4"
+		>
 			<li v-for="card in cards" :key="card.canonicalTitle" class="mx-2 cursor-pointer">
 				<div
 					class="relative flex-shrink-0 max-w-[85vw] overflow-hidden rounded-xl hover:shadow-xl"
@@ -37,21 +40,43 @@
 				</div>
 			</li>
 		</ul>
+
+		<div v-if="cards.length" class="self-center w-1/3 text-center mx-auto mb-4 my-5">
+			<button
+				class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
+				@click="reload"
+			>
+				Clear suggestions
+			</button>
+		</div>
 	</div>
 </template>
 <script>
+	import { mapMutations } from "vuex";
+	import store from "../store";
+
 	export default {
 		name: "appCard",
 		data() {
 			return {
-				cards: this.$store.state.cards,
+				cards: store.state.cards,
 				info: null,
 				loading: false,
 				errored: false,
-				searchName: this.$store.state.userQuerry,
+				searchName: store.state.userQuerry,
 			};
 		},
 
-		methods: {},
+		methods: {
+			...mapMutations(["clearData"]),
+			reload() {
+				window.location.reload();
+			},
+		},
+		computed: {
+			fetchCards() {
+				return store.getters.getCards;
+			},
+		},
 	};
 </script>
