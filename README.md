@@ -6,13 +6,13 @@ the api is very case sensitive,
 ie: to get suggestions on jujutsu kaisen , letters should be upperCase Jujutsu Kaisen
 ```
 
-## TODOS
+## Upcoming
 
 ```
-1 ) Handle the sensitivity of search input
-2 ) clear the results for new ones
-3 ) better cards
-and more
+1 ) Search tab for looking up one anime full informations (soon)
+2 ) Popular tab for showcasing most popular animes for the week (soon)
+3 ) Autentification and saving lists (later)
+
 ```
 
 ## Live preview
