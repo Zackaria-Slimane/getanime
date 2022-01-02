@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav
-			class="bg-champagne text-white shadow-md px-4 py-8 w-full sm:px-4 rounded dark:bg-gray-800"
+			class="bg-eggshell text-white shadow-md px-4 py-8 w-full sm:px-4 rounded dark:bg-gray-800"
 		>
 			<div class="container flex flex-wrap justify-between items-center mx-auto">
 				<a class="flex" @click="reload">

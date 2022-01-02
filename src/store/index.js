@@ -1,5 +1,4 @@
 import axios from "axios";
-import VueAxios from "vue-axios";
 import { createStore, Store } from "vuex";
 
 export default createStore({

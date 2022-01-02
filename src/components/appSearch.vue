@@ -1,49 +1,68 @@
 <template>
-	<div
-		class="mx-auto overflow-y-auto flex flex-col align-middle self-center justify-between justify-items-center mt-48 w-1/2"
-		:class="{ hidden: searchHidden }"
-	>
-		<input
-			type="text"
-			id="query"
-			class="text-sm rounded-lg self-center md:w-2/4 w-full p-2.5 bg-transparent focus:outline-none placeholder-black border-b-4 border-mainblue"
-			placeholder="Anime name ( case sensitive ) "
-			:value="userQuerry"
-			@change="setUserQuerry"
-		/>
+	<div class="mt-32" :class="{ hidden: searchHidden }">
+		<div
+			class="self-center mx-auto mb-4 my-5 flex align-middle items-center justify-center"
+		>
+			<div class="relative">
+				<div class="absolute left-0 inset-y-0 pl-3 flex items-center">
+					<svg
+						class="fill-current h-6 w-6 text-gray-400"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 20 20"
+					>
+						<path
+							d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+						/>
+					</svg>
+				</div>
 
-		<input
-			type="number"
-			class="h-8 mt-8 w-24 self-center rounded-lg text-center bg-transparent focus:outline-none placeholder-black border-b-4 border-mainblue"
-			name="custom-input-number"
-			:value="nbrSuggestions"
-			@change="setNbr"
-		/>
+				<input
+					class="w-full border-2 pl-12 pr-4 py-2 rounded-full focus:border-mainblue focus:shadow-outline"
+					type="text"
+					:class="{ 'border-red-400': errorTrue }"
+					placeholder="Search for an anime"
+					:value="userQuerry"
+					@change="setUserQuerry"
+				/>
+			</div>
+		</div>
+
+		<div class="flex justify-center self-center mx-auto rounded-lg w-1/3">
+			<div
+				class="py-2 px-4 font-xl font-bold cursor-pointer rounded-lg"
+				@click="decrease"
+			>
+				-
+			</div>
+
+			<input
+				class="border border-mainblue rounded-lg w-20 text-center focus:ring-mainblue"
+				type="text"
+				:value="nbrSuggestions"
+				@change="setNbr"
+			/>
+
+			<div
+				class="py-2 px-4 font-xl font-bold hover:text-mainblue cursor-pointer rounded-lg"
+				@click="increase"
+			>
+				+
+			</div>
+		</div>
 
 		<p class="mt-8 text-sm text-center text-mainblue dark:text-gray-400">
 			Enter the name of the anime you want to get suggestions based on, and the number of
 			suggestions.
 		</p>
 
-		<button
-			type="button"
-			class="text-mainblue self-center mt-10 w-48 border border-mainblue hover:bg-mainblue hover:text-white focus:ring-4 focus:ring-mainblue font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center dark:border-secondteal dark:text-secondteal dark:hover:text-white dark:focus:ring-secondteal transition delay-75 duration-300 ease-in-out"
-			@click.prevent="fetchData"
-		>
-			<span class="mx-2"> Get suggestions </span>
-			<svg
-				class="w-5 h-5 mx-2"
-				fill="currentColor"
-				viewBox="0 0 20 20"
-				xmlns="http://www.w3.org/2000/svg"
+		<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
+			<button
+				class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
+				@click.prevent="fetchData"
 			>
-				<path
-					fill-rule="evenodd"
-					d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-					clip-rule="evenodd"
-				></path>
-			</svg>
-		</button>
+				Get suggestions
+			</button>
+		</div>
 	</div>
 </template>
 <script>
@@ -54,12 +73,12 @@
 		name: "appSearch",
 		data() {
 			return {
-				nbrSuggestions: store.state.nbrSuggestions,
 				userQuerry: store.state.userQuerry,
+				nbrSuggestions: store.state.nbrSuggestions,
 			};
 		},
 		methods: {
-			...mapMutations(["fetchData", "fetchAPI"]),
+			...mapMutations(["fetchData"]),
 
 			setUserQuerry: (event) => {
 				store.commit("setUserQuerry", event.target.value);
@@ -68,11 +87,24 @@
 			setNbr: (event) => {
 				store.commit("setNbr", event.target.value);
 			},
-		},
 
+			increase() {
+				this.nbrSuggestions++;
+				store.commit("setNbr", this.nbrSuggestions);
+			},
+			decrease() {
+				if (this.nbrSuggestions > 1) {
+					this.nbrSuggestions -= 1;
+					store.commit("setNbr", this.nbrSuggestions);
+				}
+			},
+		},
 		computed: {
 			searchHidden() {
 				return this.$store.getters.getSearchState;
+			},
+			errorTrue() {
+				return this.$store.getters.getErrorState;
 			},
 		},
 	};
