@@ -6,7 +6,7 @@
 			<div class="container flex flex-wrap justify-between items-center mx-auto">
 				<a class="flex" @click="reload">
 					<span
-						class="self-center font-atitle text-mainblue hover:text-black font-bold whitespace-nowrap text-3xl dark:text-white"
+						class="self-center font-atitle text-mainblue hover:text-black font-bold whitespace-nowrap text-3xl dark:text-white cursor-pointer"
 						>Animefy
 					</span>
 				</a>
@@ -52,7 +52,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 text-xl text-mainblue rounded hover:text-black md:p-0 dark:text-white"
+								class="block py-2 cursor-pointer pr-4 pl-3 text-xl text-mainblue rounded hover:text-black md:p-0 dark:text-white"
 								@click.prevent="toggleSearch"
 								>Suggestions
 							</a>
@@ -61,7 +61,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
+								class="block py-2 pr-4 cursor-pointer pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
 								>Search
 							</a>
 						</li>
@@ -69,7 +69,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
+								class="block py-2 pr-4 pl-3 cursor-pointertext-xl text-mainblue hover:text-black md:p-0 dark:text-white"
 								>Popular
 							</a>
 						</li>

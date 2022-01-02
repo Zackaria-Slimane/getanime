@@ -1,6 +1,6 @@
 <template>
 	<div class="mt-22 w-full">
-		<p v-if="cards.length" class="text-center text-mainblue my-10 underline">
+		<p v-if="cards.length" class="text-center text-mainblue mt-10 mb-5 underline">
 			Here's your suggestions based on {{ this.$store.state.userQuerry }}
 		</p>
 		<ul
@@ -10,14 +10,10 @@
 			<li
 				v-for="card in cards"
 				:key="card.canonicalTitle"
-				class="shadow-md mx-auto max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl cursor-pointer"
+				class="shadow-md mx-auto max-w-sm transform hover:-translate-y-1 duration-300 hover:shadow-xl opacity-50 hover:opacity-100 cursor-pointer"
 			>
 				<div class="max-h-140 overflow-hidden">
-					<img
-						class="w-full h-auto opacity-50 hover:opacity-100"
-						:src="card.posterImage"
-						alt="poster image"
-					/>
+					<img class="w-full h-auto" :src="card.posterImage" alt="poster image" />
 				</div>
 				<div class="p-7 my-auto pb-12">
 					<h1 class="text-xl font-semibold text-mainblue mb-2">
