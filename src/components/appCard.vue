@@ -28,7 +28,6 @@
 					<p class="font-small text-black">
 						Popularity rank : top
 						<span class="text-honey"> {{ card.ratingRank }}</span>
-						%
 					</p>
 					<p class="font-small text-black">
 						Recommended to : <span class="text-honey">{{ card.userCount }}</span> users
