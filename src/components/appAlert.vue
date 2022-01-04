@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-if="getErrorState"
-		class="w-1/2 mx-auto mt-5 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-6 shadow-md hover:shadow-lg"
+		class="w-1/2 mx-auto mt-20 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-6 shadow-md hover:shadow-lg"
 		role="alert"
 	>
 		<div class="flex">
@@ -17,13 +17,14 @@
 				</svg>
 			</div>
 			<div>
-				<p class="font-bold text-lg">Request failed</p>
+				<p class="font-bold text-lg mb-2">Request failed</p>
 				<p class="text-md">
-					Sorry it seems something went wrong with the request! Inputs are very case
-					sensitive please try again.
+					Sorry it seems something went wrong with the request!
+					<br />
+					Be sure to fill both the name of anime and the number of suggestions.
 				</p>
 				<button
-					class="mt-5 rounded-full bg-red-500 text-white px-3 py-2 hover:shadow-lg"
+					class="mt-5 rounded-full bg-red-500 text-white px-6 py-2 hover:bg-red-600"
 					@click="toggleErrorState"
 				>
 					Go back

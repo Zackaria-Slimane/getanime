@@ -42,7 +42,9 @@ export default createStore({
 			window.location.reload();
 		},
 
-		fetchData(state) {
+		fetchInfo(state) {},
+
+		fetchSuggestion(state) {
 			if (state.errorState == false) {
 				state.loading = true;
 				state.searchHidden = false;

@@ -20,7 +20,7 @@
 					class="border-2 pl-12 pr-4 py-2 rounded-lg focus:border-mainblue focus:shadow-outline"
 					type="text"
 					:class="{ 'border-red-400': errorTrue }"
-					placeholder="Search for an anime"
+					placeholder="Get suggestions "
 					:value="userQuerry"
 					@change="setUserQuerry"
 				/>
@@ -42,7 +42,7 @@
 		<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
 			<button
 				class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
-				@click.prevent="fetchData"
+				@click.prevent="fetchSuggestion"
 			>
 				Get suggestions
 			</button>
@@ -62,7 +62,7 @@
 			};
 		},
 		methods: {
-			...mapMutations(["fetchData"]),
+			...mapMutations(["fetchSuggestion"]),
 
 			setUserQuerry: (event) => {
 				store.commit("setUserQuerry", event.target.value);
