@@ -69,7 +69,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 cursor-pointertext-xl text-mainblue hover:text-black md:p-0 dark:text-white"
+								class="block py-2 pr-4 pl-3 cursor-pointer text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
 								>Popular
 							</a>
 						</li>

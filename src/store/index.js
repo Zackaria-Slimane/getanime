@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createStore, Store } from "vuex";
+import { createStore } from "vuex";
 
 export default createStore({
 	state: {
@@ -31,6 +31,13 @@ export default createStore({
 		toggleSearch: (state) => {
 			state.searchHidden = !state.searchHidden;
 		},
+
+		toggleErrorState: (state) => {
+			state.errorState = false;
+			state.searchHidden = false;
+			state.userQuerry = " ";
+		},
+
 		reload() {
 			window.location.reload();
 		},
@@ -65,9 +72,15 @@ export default createStore({
 						state.searchHidden = true;
 					})
 					.catch(function (error) {
+						state.errorState = true;
+						state.searchHidden = true;
 						console.error(error);
 					});
-			} else return;
+			} else {
+				state.errorState = true;
+				state.searchHidden = true;
+				return;
+			} //make an error alert pop here
 		},
 	},
 

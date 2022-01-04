@@ -17,36 +17,20 @@
 				</div>
 
 				<input
-					class="w-full border-2 pl-12 pr-4 py-2 rounded-full focus:border-mainblue focus:shadow-outline"
+					class="border-2 pl-12 pr-4 py-2 rounded-lg focus:border-mainblue focus:shadow-outline"
 					type="text"
 					:class="{ 'border-red-400': errorTrue }"
 					placeholder="Search for an anime"
 					:value="userQuerry"
 					@change="setUserQuerry"
 				/>
-			</div>
-		</div>
 
-		<div class="flex justify-center self-center mx-auto rounded-lg w-1/3">
-			<div
-				class="py-2 px-4 font-xl font-bold cursor-pointer rounded-lg"
-				@click="decrease"
-			>
-				-
-			</div>
-
-			<input
-				class="border border-mainblue rounded-lg w-20 text-center focus:ring-mainblue"
-				type="text"
-				:value="nbrSuggestions"
-				@change="setNbr"
-			/>
-
-			<div
-				class="py-2 px-4 font-xl font-bold hover:text-mainblue cursor-pointer rounded-lg"
-				@click="increase"
-			>
-				+
+				<input
+					class="border rounded-lg py-2 px-2 w-20 text-center focus:ring-mainblue"
+					type="number"
+					:value="nbrSuggestions"
+					@change="setNbr"
+				/>
 			</div>
 		</div>
 
@@ -86,17 +70,6 @@
 
 			setNbr: (event) => {
 				store.commit("setNbr", event.target.value);
-			},
-
-			increase() {
-				this.nbrSuggestions++;
-				store.commit("setNbr", this.nbrSuggestions);
-			},
-			decrease() {
-				if (this.nbrSuggestions > 1) {
-					this.nbrSuggestions -= 1;
-					store.commit("setNbr", this.nbrSuggestions);
-				}
 			},
 		},
 		computed: {
