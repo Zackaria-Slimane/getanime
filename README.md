@@ -6,6 +6,11 @@ the api is very case sensitive,
 ie: to get suggestions on jujutsu kaisen , letters should be upperCase Jujutsu Kaisen
 ```
 
+# api provider
+
+https://rapidapi.com/uruguay-nomas-uruguay-nomas-default/api/anime-recommender/
+
+
 ## Upcoming
 
 ```
