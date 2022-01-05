@@ -35,7 +35,9 @@
 		</div>
 
 		<p class="mt-8 text-sm text-center text-mainblue dark:text-gray-400">
-			Enter the name of the anime you want to get suggestions based on, and the number of
+			<span></span>
+			<span></span>
+			the name of the anime you want to get suggestions based on, and the number of
 			suggestions.
 		</p>
 
@@ -62,7 +64,7 @@
 			};
 		},
 		methods: {
-			...mapMutations(["fetchSuggestion"]),
+			...mapMutations(["fetchSuggestion", "fetchInfo"]),
 
 			setUserQuerry: (event) => {
 				store.commit("setUserQuerry", event.target.value);
@@ -74,10 +76,13 @@
 		},
 		computed: {
 			searchHidden() {
-				return this.$store.getters.getSearchState;
+				return store.getters.getSearchState;
 			},
 			errorTrue() {
-				return this.$store.getters.getErrorState;
+				return store.getters.getErrorState;
+			},
+			searchMode() {
+				return store.getters.searchMode;
 			},
 		},
 	};

@@ -53,7 +53,7 @@
 		name: "appCard",
 		data() {
 			return {
-				cards: store.state.cards,
+				cards: store.state.suggestionCards,
 				info: null,
 				loading: false,
 				errored: false,

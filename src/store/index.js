@@ -8,9 +8,12 @@ export default createStore({
 		menuToggle: true,
 		searchHidden: false,
 		showClearBtn: false,
+		searchMode: false,
+		suggestionMode: true,
 		userQuerry: "",
 		nbrSuggestions: 2,
-		cards: [],
+		suggestionCards: [],
+		infoCard: [],
 	},
 	mutations: {
 		setUserQuerry: (state, payload) => {
@@ -42,7 +45,43 @@ export default createStore({
 			window.location.reload();
 		},
 
-		fetchInfo(state) {},
+		fetchInfo(state) {
+			if (state.errorState == false) {
+				state.loading = true;
+				state.searchHidden = false;
+				state.searchMode = true;
+				state.showClearBtn = true;
+
+				var options = {
+					method: "GET",
+					url: process.env.VUE_APP_INFO_URL,
+					params: { anime_title: "Bleach" },
+					headers: {
+						"x-rapidapi-host": process.env.VUE_APP_HOST,
+						"x-rapidapi-key": process.env.VUE_APP_APIKEY,
+					},
+				};
+
+				axios
+					.request(options)
+					.then(function (response) {
+						let searchInfo = response.data.data;
+						state.infoCard.push(searchInfo.attributes);
+						console.log("state info card", state.infoCard);
+						state.loading = false;
+						state.searchHidden = true;
+					})
+					.catch(function (error) {
+						state.errorState = true;
+						state.searchHidden = true;
+						console.error(error);
+					});
+			} else {
+				state.errorState = true;
+				state.searchHidden = true;
+				return;
+			} //make an error alert pop here
+		},
 
 		fetchSuggestion(state) {
 			if (state.errorState == false) {
@@ -50,7 +89,7 @@ export default createStore({
 				state.searchHidden = false;
 				state.showClearBtn = true;
 
-				var options = {
+				let options = {
 					method: "GET",
 					url: process.env.VUE_APP_URL,
 					params: {
@@ -68,7 +107,7 @@ export default createStore({
 					.then(function (response) {
 						let cardsInfo = response.data.data;
 						cardsInfo.forEach((card, index) => {
-							state.cards.push(card.attributes);
+							state.suggestionCards.push(card.attributes);
 						});
 						state.loading = false;
 						state.searchHidden = true;
@@ -89,9 +128,11 @@ export default createStore({
 	getters: {
 		getMenuState: (state) => state.menuToggle,
 		getSearchState: (state) => state.searchHidden,
+		getSearchMode: (state) => state.searchMode,
 		getUserQuerry: (state) => state.userQuerry,
 		getErrorState: (state) => state.errorState,
-		getCards: (state) => state.cards,
+		getCards: (state) => state.suggestionCards,
+		fetchInfos: (state) => state.infoCard,
 	},
 	actions: {},
 	modules: {},
