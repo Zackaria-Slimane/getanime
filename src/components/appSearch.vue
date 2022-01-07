@@ -41,37 +41,51 @@
 			suggestions.
 		</p>
 
-		<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
-			<button
-				class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
-				@click.prevent="fetchSuggestion"
-			>
-				Get suggestions
-			</button>
-		</div>
+		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
+			<!-- your form inputs goes here-->
+			<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
+				<button
+					type="submit"
+					class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
+					@click.prevent="submit"
+				>
+					Get suggestions
+				</button>
+			</div>
+		</form>
 	</div>
 </template>
+
 <script>
-	import { mapMutations } from "vuex";
 	import store from "../store";
 
 	export default {
 		name: "appSearch",
 		data() {
 			return {
+				fullPage: true,
 				userQuerry: store.state.userQuerry,
 				nbrSuggestions: store.state.nbrSuggestions,
 			};
 		},
 		methods: {
-			...mapMutations(["fetchSuggestion", "fetchInfo"]),
-
 			setUserQuerry: (event) => {
 				store.commit("setUserQuerry", event.target.value);
 			},
 
 			setNbr: (event) => {
 				store.commit("setNbr", event.target.value);
+			},
+			submit() {
+				store.commit("fetchSuggestion");
+				let loader = this.$loading.show({
+					// Optional parameters
+					container: this.fullPage ? null : this.$refs.formContainer,
+					canCancel: false,
+				});
+				setTimeout(() => {
+					loader.hide();
+				}, 4000);
 			},
 		},
 		computed: {
