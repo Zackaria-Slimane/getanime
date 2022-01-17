@@ -85,13 +85,13 @@
 					canCancel: false,
 				});
 				store.dispatch("getSuggestion");
-				let uiBlock = setInterval(() => {
+				setInterval(() => {
 					if (this.cards.length > 0) {
 						loader.hide();
 						return;
 					}
 				}, 500);
-				clearInterval(uiBlock);
+				//clearInterval(uiBlock);
 			},
 		},
 
