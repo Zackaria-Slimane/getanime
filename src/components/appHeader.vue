@@ -42,7 +42,6 @@
 						/>
 					</svg>
 				</button>
-
 				<div
 					class="w-full md:block md:w-auto font-atitle"
 					:class="{ hidden: menuToggle }"

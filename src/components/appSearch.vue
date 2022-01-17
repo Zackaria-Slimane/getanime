@@ -42,7 +42,6 @@
 		</p>
 
 		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
-			<!-- your form inputs goes here-->
 			<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
 				<button
 					type="submit"
@@ -57,18 +56,21 @@
 </template>
 
 <script>
+	import { mapActions } from "vuex";
 	import store from "../store";
 
 	export default {
 		name: "appSearch",
 		data() {
 			return {
+				cards: store.state.suggestionCards,
 				fullPage: true,
 				userQuerry: store.state.userQuerry,
 				nbrSuggestions: store.state.nbrSuggestions,
 			};
 		},
 		methods: {
+			...mapActions(["getSuggestion"]),
 			setUserQuerry: (event) => {
 				store.commit("setUserQuerry", event.target.value);
 			},
@@ -76,17 +78,22 @@
 			setNbr: (event) => {
 				store.commit("setNbr", event.target.value);
 			},
+
 			submit() {
-				store.commit("fetchSuggestion");
 				let loader = this.$loading.show({
 					container: this.fullPage ? null : this.$refs.formContainer,
 					canCancel: false,
 				});
-				setTimeout(() => {
-					loader.hide();
-				}, 4000);
+				store.dispatch("getSuggestion");
+				setInterval(() => {
+					if (this.cards.length > 0) {
+						loader.hide();
+						return;
+					}
+				}, 500);
 			},
 		},
+
 		computed: {
 			searchHidden() {
 				return store.getters.getSearchState;

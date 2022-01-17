@@ -83,40 +83,18 @@ export default createStore({
 			} //make an error alert pop here
 		},
 
-		fetchSuggestion(state) {
+		fetchSuggestion(state, payload) {
 			if (state.errorState == false) {
 				state.loading = true;
 				state.searchHidden = false;
 				state.showClearBtn = true;
 
-				let options = {
-					method: "GET",
-					url: process.env.VUE_APP_URL,
-					params: {
-						anime_title: state.userQuerry,
-						number_of_anime: state.nbrSuggestions,
-					},
-					headers: {
-						"x-rapidapi-host": process.env.VUE_APP_HOST,
-						"x-rapidapi-key": process.env.VUE_APP_APIKEY,
-					},
-				};
-
-				axios
-					.request(options)
-					.then(function (response) {
-						let cardsInfo = response.data.data;
-						cardsInfo.forEach((card, index) => {
-							state.suggestionCards.push(card.attributes);
-						});
-						state.loading = false;
-						state.searchHidden = true;
-					})
-					.catch(function (error) {
-						state.errorState = true;
-						state.searchHidden = true;
-						console.error(error);
-					});
+				let cardsInfo = payload;
+				cardsInfo.forEach((card, index) => {
+					state.suggestionCards.push(card.attributes);
+				});
+				state.loading = false;
+				state.searchHidden = true;
 			} else {
 				state.errorState = true;
 				state.searchHidden = true;
@@ -134,6 +112,32 @@ export default createStore({
 		getCards: (state) => state.suggestionCards,
 		fetchInfos: (state) => state.infoCard,
 	},
-	actions: {},
+	actions: {
+		async getSuggestion({ commit, state }) {
+			let options = {
+				method: "GET",
+				url: process.env.VUE_APP_URL,
+				params: {
+					anime_title: state.userQuerry,
+					number_of_anime: state.nbrSuggestions,
+				},
+				headers: {
+					"x-rapidapi-host": process.env.VUE_APP_HOST,
+					"x-rapidapi-key": process.env.VUE_APP_APIKEY,
+				},
+			};
+
+			await axios
+				.request(options)
+				.then((response) => {
+					commit("fetchSuggestion", response.data.data);
+				})
+				.catch(function (error) {
+					console.log(error);
+					state.errorState = true;
+					state.searchHidden = true;
+				});
+		},
+	},
 	modules: {},
 });
