@@ -1,12 +1,12 @@
 <template>
 	<div class="mt-32" :class="{ hidden: searchHidden }">
 		<div
-			class="self-center mx-auto mb-4 my-5 flex align-middle items-center justify-center"
+			class="mx-auto my-5 mb-4 flex items-center justify-center self-center align-middle"
 		>
 			<div class="relative">
-				<div class="absolute left-0 inset-y-0 pl-3 flex items-center">
+				<div class="absolute inset-y-0 left-0 flex items-center pl-3">
 					<svg
-						class="fill-current h-6 w-6 text-gray-400"
+						class="h-6 w-6 fill-current text-gray-400"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
 					>
@@ -17,7 +17,7 @@
 				</div>
 
 				<input
-					class="border-2 pl-12 pr-4 py-2 rounded-lg focus:border-mainblue focus:shadow-outline"
+					class="focus:border-mainblue focus:shadow-outline rounded-lg border-2 py-2 pl-12 pr-4"
 					type="text"
 					:class="{ 'border-red-400': errorTrue }"
 					placeholder="Get suggestions "
@@ -26,7 +26,7 @@
 				/>
 
 				<input
-					class="border rounded-lg py-2 px-2 w-20 text-center focus:ring-mainblue"
+					class="focus:ring-mainblue w-20 rounded-lg border py-2 px-2 text-center"
 					type="number"
 					:value="nbrSuggestions"
 					@change="setNbr"
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 
-		<p class="mt-8 text-sm text-center text-mainblue dark:text-gray-400">
+		<p class="text-mainblue mt-8 text-center text-sm dark:text-gray-400">
 			<span></span>
 			<span></span>
 			the name of the anime you want to get suggestions based on, and the number of
@@ -42,10 +42,10 @@
 		</p>
 
 		<form @submit.prevent="submit" class="vld-parent" ref="formContainer">
-			<div class="self-center w-1/3 text-center mx-auto mb-4 my-5">
+			<div class="mx-auto my-5 mb-4 w-1/3 self-center text-center">
 				<button
 					type="submit"
-					class="px-4 py-2 text-sm rounded-lg font-medium border-2 border-mainblue text-mainblue focus:outline-none hover:bg-mainblue hover:text-white"
+					class="border-mainblue text-mainblue hover:bg-mainblue rounded-lg border-2 px-4 py-2 text-sm font-medium hover:text-white focus:outline-none"
 					@click.prevent="submit"
 				>
 					Get suggestions

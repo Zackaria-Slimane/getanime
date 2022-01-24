@@ -1,24 +1,24 @@
 <template>
 	<div>
 		<nav
-			class="bg-eggshell text-white shadow-md px-4 py-8 w-full sm:px-4 rounded dark:bg-gray-800"
+			class="bg-eggshell w-full rounded px-4 py-8 text-white shadow-md dark:bg-gray-800 sm:px-4"
 		>
-			<div class="container flex flex-wrap justify-between items-center mx-auto">
+			<div class="container mx-auto flex flex-wrap items-center justify-between">
 				<a class="flex" @click="reload">
 					<span
-						class="self-center font-atitle text-mainblue hover:text-black font-bold whitespace-nowrap text-3xl dark:text-white cursor-pointer"
+						class="font-atitle text-mainblue cursor-pointer self-center whitespace-nowrap text-3xl font-bold hover:text-black dark:text-white"
 						>Animefy
 					</span>
 				</a>
 
 				<button
 					type="button"
-					class="inline-flex items-center p-2 ml-3 text-sm text-white rounded-lg md:hidden"
+					class="ml-3 inline-flex items-center rounded-lg p-2 text-sm text-white md:hidden"
 					@click.prevent="toggleMenu"
 				>
 					<span class="sr-only">Open main menu</span>
 					<svg
-						class="w-6 h-6 text-mainblue"
+						class="text-mainblue h-6 w-6"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@
 						/>
 					</svg>
 					<svg
-						class="hidden w-6 h-6"
+						class="hidden h-6 w-6"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg"
@@ -43,15 +43,15 @@
 					</svg>
 				</button>
 				<div
-					class="w-full md:block md:w-auto font-atitle"
+					class="font-atitle w-full md:block md:w-auto"
 					:class="{ hidden: menuToggle }"
 					id="mobile-menu"
 				>
-					<ul class="flex flex-col mt-4 md:flex-row md:space-x-10 md:mt-0 font-bold">
+					<ul class="mt-4 flex flex-col font-bold md:mt-0 md:flex-row md:space-x-10">
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 cursor-pointer pr-4 pl-3 text-xl text-mainblue rounded hover:text-black md:p-0 dark:text-white"
+								class="text-mainblue block cursor-pointer rounded py-2 pr-4 pl-3 text-xl hover:text-black dark:text-white md:p-0"
 								@click.prevent="toggleSearch"
 								>Suggestions
 							</a>
@@ -60,7 +60,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 cursor-pointer pl-3 text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
+								class="text-mainblue block cursor-pointer py-2 pr-4 pl-3 text-xl hover:text-black dark:text-white md:p-0"
 								>Search
 							</a>
 						</li>
@@ -68,7 +68,7 @@
 						<li>
 							<a
 								href="javascript:0void"
-								class="block py-2 pr-4 pl-3 cursor-pointer text-xl text-mainblue hover:text-black md:p-0 dark:text-white"
+								class="text-mainblue block cursor-pointer py-2 pr-4 pl-3 text-xl hover:text-black dark:text-white md:p-0"
 								>Popular
 							</a>
 						</li>
