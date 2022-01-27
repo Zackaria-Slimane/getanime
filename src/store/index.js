@@ -126,7 +126,6 @@ export default createStore({
 					"x-rapidapi-key": process.env.VUE_APP_APIKEY,
 				},
 			};
-
 			await axios
 				.request(options)
 				.then((response) => {

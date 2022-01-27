@@ -81,7 +81,7 @@
 
 			submit() {
 				let loader = this.$loading.show({
-					container: this.fullPage ? null : this.$refs.formContainer,
+					container: null,
 					canCancel: false,
 				});
 				store.dispatch("getSuggestion");
