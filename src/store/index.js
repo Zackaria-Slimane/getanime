@@ -11,7 +11,7 @@ export default createStore({
 		searchMode: false,
 		suggestionMode: true,
 		userQuerry: "",
-		nbrSuggestions: 2,
+		nbrSuggestions: 3,
 		suggestionCards: [],
 		infoCard: [],
 	},
