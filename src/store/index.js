@@ -90,9 +90,11 @@ export default createStore({
 				state.showClearBtn = true;
 
 				let cardsInfo = payload;
+
 				cardsInfo.forEach((card, index) => {
-					state.suggestionCards.push(card.attributes);
+					state.suggestionCards.push(card);
 				});
+				console.log("CARDS:", state.suggestionCards);
 				state.loading = false;
 				state.searchHidden = true;
 			} else {
