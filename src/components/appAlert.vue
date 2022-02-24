@@ -1,13 +1,13 @@
 <template>
 	<div
 		v-if="getErrorState"
-		class="w-1/2 mx-auto mt-20 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-6 shadow-md hover:shadow-lg"
+		class="mx-auto mt-20 w-1/2 rounded-b border-t-4 border-red-500 bg-red-100 px-4 py-6 text-red-900 shadow-md hover:shadow-lg"
 		role="alert"
 	>
 		<div class="flex">
 			<div class="py-1">
 				<svg
-					class="fill-current h-6 w-6 text-red-500 mr-4"
+					class="mr-4 h-6 w-6 fill-current text-red-500"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 				>
@@ -17,14 +17,15 @@
 				</svg>
 			</div>
 			<div>
-				<p class="font-bold text-lg mb-2">Request failed</p>
+				<p class="mb-2 text-lg font-bold">Request failed</p>
 				<p class="text-md">
-					Sorry it seems something went wrong with the request!
+					Sorry it seems something went wrong with the request server!
 					<br />
-					Be sure to fill both the name of anime and the number of suggestions.
+					Be sure to fill both the name of anime and the number of suggestions and try
+					again.
 				</p>
 				<button
-					class="mt-5 rounded-full bg-red-500 text-white px-6 py-2 hover:bg-red-600"
+					class="mt-5 rounded-full bg-red-500 px-6 py-2 text-white hover:bg-red-600"
 					@click="toggleErrorState"
 				>
 					Go back

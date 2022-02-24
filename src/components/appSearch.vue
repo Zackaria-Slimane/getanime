@@ -67,6 +67,7 @@
 				fullPage: true,
 				userQuerry: store.state.userQuerry,
 				nbrSuggestions: store.state.nbrSuggestions,
+				intervalCount: 0,
 			};
 		},
 		methods: {
@@ -86,7 +87,8 @@
 				});
 				store.dispatch("getSuggestion");
 				setInterval(() => {
-					if (this.cards.length > 0) {
+					this.intervalCount = this.intervalCount + 1;
+					if (this.cards.length > 0 || this.intervalCount === 5) {
 						loader.hide();
 						return;
 					}

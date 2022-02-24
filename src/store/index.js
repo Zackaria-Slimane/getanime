@@ -98,6 +98,7 @@ export default createStore({
 				state.loading = false;
 				state.searchHidden = true;
 			} else {
+				state.loading = false;
 				state.errorState = true;
 				state.searchHidden = true;
 				return;
@@ -135,6 +136,7 @@ export default createStore({
 				})
 				.catch(function (error) {
 					console.log(error);
+					state.loading = false;
 					state.errorState = true;
 					state.searchHidden = true;
 				});
