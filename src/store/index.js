@@ -90,12 +90,15 @@ export default createStore({
 				state.showClearBtn = true;
 
 				let cardsInfo = payload;
+
 				cardsInfo.forEach((card, index) => {
-					state.suggestionCards.push(card.attributes);
+					state.suggestionCards.push(card);
 				});
+				console.log("CARDS:", state.suggestionCards);
 				state.loading = false;
 				state.searchHidden = true;
 			} else {
+				state.loading = false;
 				state.errorState = true;
 				state.searchHidden = true;
 				return;
@@ -133,6 +136,7 @@ export default createStore({
 				})
 				.catch(function (error) {
 					console.log(error);
+					state.loading = false;
 					state.errorState = true;
 					state.searchHidden = true;
 				});

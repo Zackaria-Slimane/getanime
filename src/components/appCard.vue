@@ -9,28 +9,24 @@
 		>
 			<li
 				v-for="card in cards"
-				:key="card.canonicalTitle"
+				:key="card.id"
 				class="mx-auto max-w-sm transform cursor-pointer opacity-50 shadow-md duration-300 hover:-translate-y-1 hover:opacity-100 hover:shadow-xl"
 			>
 				<div class="max-h-140 overflow-hidden">
-					<img class="h-auto w-full" :src="card.posterImage" alt="poster image" />
+					<img class="h-92 w-full" :src="card.coverImage.large" alt="poster image" />
 				</div>
 				<div class="my-auto p-7 pb-12">
 					<h1 class="text-mainblue mb-2 text-xl font-semibold">
-						{{ card.canonicalTitle }}
+						{{ card.title.english }}
 					</h1>
 					<p class="font-small text-black">
-						Air date : <span class="text-honey">{{ card.startDate }}</span>
+						Native title : <span class="text-honey">{{ card.title.romaji }}</span>
 					</p>
 					<p class="font-small text-black">
-						Average rating : <span class="text-honey">{{ card.averageRating }}</span> %
+						Air date : <span class="text-honey">{{ card.seasonYear }}</span>
 					</p>
 					<p class="font-small text-black">
-						Popularity rank : top
-						<span class="text-honey"> {{ card.ratingRank }}</span>
-					</p>
-					<p class="font-small text-black">
-						Recommended to : <span class="text-honey">{{ card.userCount }}</span> users
+						Average rating : <span class="text-honey">{{ card.averageScore }}</span> %
 					</p>
 				</div>
 			</li>
